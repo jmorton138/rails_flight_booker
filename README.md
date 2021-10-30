@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Flight Booke Project from The Odin Project's Ruby on Rails Course. You can see the full project here:
 
-Things you may want to cover:
+https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/flight-booker
 
-* Ruby version
+This project builds a typical checkout process for booking a one way flight with the exception of processing any payments.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
