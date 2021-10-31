@@ -1,8 +1,6 @@
 
 
 <%= form_with(url: "/search", method: "get")  do %>
-    <%= label_tag(:query, "Search for:") %>
-    <%= text_field_tag(:query) %>
     <%= label_tag(:departure_airport_id, "Depart from:") %>
     <%= select_tag(:departure_airport_id, options_for_select(@airport_options)) %>
     <%= label_tag(:arrival_airport_id, "Arrive at:") %>
