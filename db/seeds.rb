@@ -14,11 +14,11 @@ f1 = Flight.new(departure_time: '2021-12-20 12:05:00', duration: 7200)
 f1.departure_airport = sfo
 f1.arrival_airport = lax
 f1.save
-f2 = Flight.new(departure_time: '2021-12-20 14:05:00', duration: 35200)
+f2 = Flight.new(departure_time: '2021-12-21 14:05:00', duration: 35200)
 f2.departure_airport = sfo
 f2.arrival_airport = lho
 f2.save
-f3 = Flight.new(departure_time: '2021-12-20 16:05:00', duration: 35200)
+f3 = Flight.new(departure_time: '2021-12-22 16:05:00', duration: 35200)
 f3.departure_airport = lax
 f3.arrival_airport = lgw
 f3.save
