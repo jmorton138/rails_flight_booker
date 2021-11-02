@@ -1,0 +1,23 @@
+
+
+<div>
+Space
+</div>
+
+Flight ID: <%= @flight.id %>,
+<%= @flight.departure_time %>
+From: <%= @flight.departure_airport.airport_code %>
+To: <%= @flight.arrival_airport.airport_code %>
+
+<%= @params %>
+<%= form_for @booking do |f| %>
+    <% @params.to_i.times do |i|%>
+        <%= f.fields_for @booking.passengers.build do |passenger_form| %>
+            Passenger <%= i+1 %>:
+            <%= passenger_form.text_field :name, placeholder: "name" %>
+            <%= passenger_form.text_field :email, placeholder: "email" %>
+        <% end %>
+
+    <% end %>
+    <%= submit_tag("Book Flight") %>
+<% end %>
