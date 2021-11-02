@@ -22,6 +22,10 @@ f3 = Flight.new(departure_time: '2021-12-22 16:05:00', duration: 35200)
 f3.departure_airport = lax
 f3.arrival_airport = lgw
 f3.save
+f4 = Flight.new(departure_time: '2021-12-20 10:05:00', duration: 7200)
+f4.departure_airport = sfo
+f4.arrival_airport = lax
+f4.save
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).

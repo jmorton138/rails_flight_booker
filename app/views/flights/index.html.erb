@@ -1,6 +1,6 @@
 
 
-<%= form_with(url: "/", method: "get")  do %>
+<%= form_with(url: "/flights", method: "get")  do %>
     <%= label_tag(:departure_code, "Depart from:") %>
     <%= select_tag(:departure_code, options_for_select(@airport_options)) %>
     <%= label_tag(:arrival_code, "Arrive at:") %>
@@ -12,6 +12,10 @@
     <%= submit_tag("Search") %>
 <% end %>
 
-<%= @flights %>
+<%= form_with(url: "bookings/new", method: "get") do |form| %>
+    <%= form.collection_radio_buttons :flight_id, @flights, :id, :id %>
+    
+    <%= submit_tag("Choose flight") %>
+<% end %>
 
 

@@ -13,7 +13,7 @@ class Flight < ApplicationRecord
 
   def self.search(params)
     flights = Flight.where(departure_airport_id: params[:departure_code], arrival_airport_id: params[:arrival_code])
-    flights.map do |flight|
+    return flights.map do |flight|
       flight if flight.departure_time_formatted_int == params[:date]
     end
 

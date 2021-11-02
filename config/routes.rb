@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :flights
 
   root "flights#index"
-  #get "/search", to: "flights#search"
+  get "/search", to: "flights#search"
 end

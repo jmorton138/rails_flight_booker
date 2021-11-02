@@ -7,13 +7,15 @@ class FlightsController < ApplicationController
         @passenger_options = 4.times.map { |i| [i + 1, i + 1] }
         @departure_airport = Airport.where(id: :airport_code)
 
-        @flights = Flight.search(params)
+       @flights = Flight.search(params)
     end
 
+    # def search
+    #     @flights = Flight.where(departure_airport_id: params[:departure_code], arrival_airport_id: params[:arrival_code])
+    #     @flights = @flights.map do |flight|
+    #       flight if flight.departure_time_formatted_int == params[:date]
+    #     end
+        
+    # end
 
-    private
-
-    def search_params
-        params.require(:flight).permit(:departure_code, :arrival_code, :num_tickets, :date)
-    end
 end
