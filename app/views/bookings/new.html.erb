@@ -9,11 +9,10 @@ Flight ID: <%= @flight.id %>,
 From: <%= @flight.departure_airport.airport_code %>
 To: <%= @flight.arrival_airport.airport_code %>
 
-<%= @params %>
 <%= form_for @booking do |f| %>
-    <% @params.to_i.times do |i|%>
-        <%= f.fields_for @booking.passengers.build do |passenger_form| %>
-            Passenger <%= i+1 %>:
+    <%= hidden_field_tag("flight_id", @flight.id) %>
+    <% @booking.passengers.each do |passenger|%>
+        <%= f.fields_for passenger, index: passenger.id do |passenger_form| %>
             <%= passenger_form.text_field :name, placeholder: "name" %>
             <%= passenger_form.text_field :email, placeholder: "email" %>
         <% end %>
@@ -21,3 +20,4 @@ To: <%= @flight.arrival_airport.airport_code %>
     <% end %>
     <%= submit_tag("Book Flight") %>
 <% end %>
+
