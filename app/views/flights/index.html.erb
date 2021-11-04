@@ -1,23 +1,32 @@
 
-
-<%= form_with(url: "/flights", method: "get")  do %>
-    <%= label_tag(:departure_code, "Depart from:") %>
-    <%= select_tag(:departure_code, options_for_select(@airport_options)) %>
-    <%= label_tag(:arrival_code, "Arrive at:") %>
-    <%= select_tag(:arrival_code, options_for_select(@airport_options)) %>
-    <%= label_tag(:num_tickets, "# of passengers") %>
-    <%= select_tag(:num_tickets, options_for_select(@passenger_options)) %>
-    <%= label_tag(:date, "Date") %>
-    <%= select_tag(:date, options_for_select(@date_options)) %>
-    <%= submit_tag("Search") %>
-<% end %>
-
-<% if @flights.length > 0 %>
-<%= form_with(url: "bookings/new", method: "get") do |form| %>
-    <%= form.collection_radio_buttons :flight_id, @flights, :id, :id %>
-    <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
-    <%= submit_tag("Choose flight") %>
-<% end %>
-<% end %>
+<div>
+    <%= form_with(url: "/flights", method: "get")  do %>
+        <%= label_tag(:departure_code, "Depart from:") %>
+        <%= select_tag(:departure_code, options_for_select(@airport_options)) %>
+        <%= label_tag(:arrival_code, "Arrive at:") %>
+        <%= select_tag(:arrival_code, options_for_select(@airport_options)) %>
+        <%= label_tag(:num_tickets, "# of passengers") %>
+        <%= select_tag(:num_tickets, options_for_select(@passenger_options)) %>
+        <%= label_tag(:date, "Date") %>
+        <%= select_tag(:date, options_for_select(@date_options)) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+</div>
+<div>
+    <% if @flights.length > 0 %>
+        <div>
+            Matching flights:
+        </div>
+        <div>
+        <%= form_with(url: "bookings/new", method: "get") do |form| %>
+            <div>
+                <%= form.collection_radio_buttons :flight_id, @flights, :id, :id %>
+            </div>
+                <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
+            <%= submit_tag("Choose flight") %>
+        <% end %>
+        </div>
+    <% end %>
+</div>
 
 
