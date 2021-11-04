@@ -18,7 +18,6 @@ class BookingsController < ApplicationController
         if @booking.save
             redirect_to booking_path(@booking.id)
         else
-            
             flash.alert ="error"
             render :new
         end

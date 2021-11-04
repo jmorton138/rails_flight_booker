@@ -1,19 +1,31 @@
 
 
 <div>
-Space
+    <h1>Confirm Flight Details</h1>
 </div>
 
-Flight ID: <%= @flight.id %>,
-<%= @flight.departure_time %>
-From: <%= @flight.departure_airport.airport_code %>
-To: <%= @flight.arrival_airport.airport_code %>
+</div>
+    Flight Number: <%= @flight.id %>
+<div>
+    Departure Time: <%= @flight.departure_time %>  
+</div>
+<div>
+    From: <%= @flight.departure_airport.airport_code %>
 
+</div>
+<div>
+    To: <%= @flight.arrival_airport.airport_code %>
+</div>
 <%= form_for @booking, local: true do |f| %>
     <%= hidden_field_tag :flight_id, @flight.id %>
         <%= f.fields_for :passengers do |passenger_form| %>
-            <%= passenger_form.text_field :name, placeholder: "name" %>
-            <%= passenger_form.text_field :email, placeholder: "email" %>
+            <div>
+                <%= passenger_form.text_field :name, placeholder: "name" %>
+                <%= passenger_form.text_field :email, placeholder: "email" %>
+            </div>
+            <div>
+             
+            </div>
         <% end %>
     <%= submit_tag("Book Flight") %>
 <% end %>

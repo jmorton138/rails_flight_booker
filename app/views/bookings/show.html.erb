@@ -4,8 +4,7 @@
 <div>
 
 </div>
-Flight Number: <%= @booking.flight.id %>
-
+    Flight Number: <%= @booking.flight.id %>
 <div>
     Departure Time: <%= @booking.flight.departure_time %>  
 </div>
@@ -15,13 +14,15 @@ Flight Number: <%= @booking.flight.id %>
 </div>
 <div>
     To: <%= @booking.flight.arrival_airport.airport_code %>
-
 </div>
 <div>
     Passengers:
     <% @booking.passengers.each do |p| %>
         <div>
-            <%= p.name %>
+            Name: <%= p.name %>
+        </div>
+        <div>
+            Email: <%= p.email %>
         </div>
     <% end %>
 </div>
