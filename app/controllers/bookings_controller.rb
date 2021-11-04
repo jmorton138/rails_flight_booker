@@ -12,25 +12,27 @@ class BookingsController < ApplicationController
     end
 
     def create
-       # @flight = Flight.where(id: params[:flight_id])[0]
-       # @booking = Booking.new(passenger_params)
-        # if @booking.save?
-        #     @flight.bookings << @booking
-        #     redirect_to booking_path
-        # else
-        #     flash[:error] ="error"
-        #     render :new
-        # end
+       @flight = Flight.where(id: params[:flight_id])[0]
+       @booking = Booking.new(booking_params)
+       @flight.bookings << @booking
+        if @booking.save
+            redirect_to booking_path(@booking.id)
+        else
+            
+            flash.alert ="error"
+            render :new
+        end
 
         
     end
 
     def show
+        @booking = Booking.find(params[:id])
     end
 
     private
 
-    def passenger_params
-        params.require(:booking).permit(:flight_id, :passenger => [ :name, :email ])
+    def booking_params
+        params.require(:booking).permit(:flight_id, :passengers_attributes => [ :id, :name, :email ])
     end
 end
