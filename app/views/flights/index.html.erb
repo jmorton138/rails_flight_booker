@@ -26,22 +26,33 @@
             <h2>Matching flights:</h2>
         </div>
 
-
+        <table>
+        <tr>
+            <th>Flight no.</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Date</th>
+            <th>Departure Time</th>
+            <th>Duration</th>
+        </tr>
         <% @flights.each do |flight| %>
-            <div>
-            <%= flight.id %>
-            <%= flight.departure_airport.airport_code %>
-            <%= flight.arrival_airport.airport_code %>
-            <%= flight.departure_time %>
-            <%= flight.duration %>
-            <%= form_with(url: "bookings/new", method: "get") do |form| %>
-                <%= hidden_field_tag "flight_id", flight.id %>
-                <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
-                <%= submit_tag("Choose flight") %>
-            <% end %>
-            </div>
+            <tr>
+                <th><%= flight.id %></th>
+                <th><%= flight.departure_airport.airport_code %></th>
+                <th><%= flight.arrival_airport.airport_code %></th>
+                <th><%= flight.departure_time_formatted %></th>
+                <th><%= flight.departure_time %></th>
+                <th><%= flight.duration %></th>
+                <th>
+                    <%= form_with(url: "bookings/new", method: "get") do |form| %>
+                        <%= hidden_field_tag "flight_id", flight.id %>
+                        <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
+                        <%= submit_tag("Choose flight") %>
+                    <% end %>
+                </th>
+            </tr>
         <% end %>
-
+        </table>
     <% end %>
 </div>
 
