@@ -41,7 +41,7 @@
                 <th><%= flight.departure_airport.airport_code %></th>
                 <th><%= flight.arrival_airport.airport_code %></th>
                 <th><%= flight.departure_time_formatted %></th>
-                <th><%= flight.departure_time %></th>
+                <th><%= flight.departure_time_format_time %></th>
                 <th><%= flight.duration %></th>
                 <th>
                     <%= form_with(url: "bookings/new", method: "get") do |form| %>
