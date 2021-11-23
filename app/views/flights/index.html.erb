@@ -27,16 +27,17 @@
         </div>
 
         <table>
-        <tr>
+        <tr class="table-header">
             <th>Flight no.</th>
             <th>Departure</th>
             <th>Arrival</th>
             <th>Date</th>
             <th>Departure Time</th>
             <th>Duration</th>
+            <th>Choose Flight</th>
         </tr>
         <% @flights.each do |flight| %>
-            <tr>
+            <tr class="table-row">
                 <th><%= flight.id %></th>
                 <th><%= flight.departure_airport.airport_code %></th>
                 <th><%= flight.arrival_airport.airport_code %></th>
@@ -47,7 +48,7 @@
                     <%= form_with(url: "bookings/new", method: "get") do |form| %>
                         <%= hidden_field_tag "flight_id", flight.id %>
                         <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
-                        <%= submit_tag("Choose flight") %>
+                        <%= submit_tag("Book flight") %>
                     <% end %>
                 </th>
             </tr>
