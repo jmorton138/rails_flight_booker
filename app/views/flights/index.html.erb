@@ -1,31 +1,47 @@
 
-<div>
+<div id="flight-search">
     <%= form_with(url: "/flights", method: "get")  do %>
-        <%= label_tag(:departure_code, "Depart from:") %>
-        <%= select_tag(:departure_code, options_for_select(@airport_options)) %>
-        <%= label_tag(:arrival_code, "Arrive at:") %>
-        <%= select_tag(:arrival_code, options_for_select(@airport_options)) %>
-        <%= label_tag(:num_tickets, "# of passengers") %>
-        <%= select_tag(:num_tickets, options_for_select(@passenger_options)) %>
-        <%= label_tag(:date, "Date") %>
-        <%= select_tag(:date, options_for_select(@date_options)) %>
+        <div class="form-field">
+            <%= label_tag(:departure_code, "Depart from:") %>
+            <%= select_tag(:departure_code, options_for_select(@airport_options)) %>
+        </div>
+        <div class="form-field">
+            <%= label_tag(:arrival_code, "Arrive at:") %>
+            <%= select_tag(:arrival_code, options_for_select(@airport_options)) %>
+        </div>
+        <div class="form-field">
+            <%= label_tag(:num_tickets, "# of passengers") %>
+            <%= select_tag(:num_tickets, options_for_select(@passenger_options)) %>
+        </div>
+        <div class="form-field">
+            <%= label_tag(:date, "Date") %>
+            <%= select_tag(:date, options_for_select(@date_options)) %>
+        </div>
         <%= submit_tag("Search") %>
     <% end %>
 </div>
-<div>
+<div id="flight-matches">
     <% if @flights.length > 0 %>
         <div>
-            Matching flights:
+            <h2>Matching flights:</h2>
         </div>
-        <div>
-        <%= form_with(url: "bookings/new", method: "get") do |form| %>
+
+
+        <% @flights.each do |flight| %>
             <div>
-                <%= form.collection_radio_buttons :flight_id, @flights, :id, :id %>
-            </div>
+            <%= flight.id %>
+            <%= flight.departure_airport.airport_code %>
+            <%= flight.arrival_airport.airport_code %>
+            <%= flight.departure_time %>
+            <%= flight.duration %>
+            <%= form_with(url: "bookings/new", method: "get") do |form| %>
+                <%= hidden_field_tag "flight_id", flight.id %>
                 <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
-            <%= submit_tag("Choose flight") %>
+                <%= submit_tag("Choose flight") %>
+            <% end %>
+            </div>
         <% end %>
-        </div>
+
     <% end %>
 </div>
 
