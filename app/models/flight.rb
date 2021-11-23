@@ -16,6 +16,11 @@ class Flight < ApplicationRecord
   def departure_time_format_time
     departure_time.strftime("%I:%M %p")
   end 
+
+  def format_duration
+    "%dh %02dm" % [duration / 3600, duration / 60 % 60]
+  end
+  
   def self.search(params)
     flights = Flight.where(departure_airport_id: params[:departure_code], arrival_airport_id: params[:arrival_code])
     return flights.map do |flight|
