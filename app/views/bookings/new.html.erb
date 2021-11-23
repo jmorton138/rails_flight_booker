@@ -4,32 +4,42 @@
     <h1>Confirm Flight Details</h1>
 </div>
 
-</div>
-    Flight Number: <%= @flight.id %>
-<div>
-    Departure Time: <%= @flight.departure_time %>  
-</div>
-<div>
-    From: <%= @flight.departure_airport.airport_code %>
+<div id="flight-confirm">
+    <div class="conf-div">
+        Flight Number: <%= @flight.id %>
+    </div>
 
-</div>
-<div>
-    To: <%= @flight.arrival_airport.airport_code %>
-</div>
-<%= form_for @booking, local: true do |f| %>
-    <%= hidden_field_tag :flight_id, @flight.id %>
-        <%= f.fields_for :passengers do |passenger_form| %>
-            <div>
-                <%= passenger_form.text_field :name, placeholder: "name" %>
-                <%= passenger_form.text_field :email, placeholder: "email" %>
-            </div>
-            <div>
-             
-            </div>
+    <div class="conf-div">
+        Departure Time: <%= @flight.departure_time %>  
+    </div>
+
+    <div class="conf-div">
+        From: <%= @flight.departure_airport.airport_code %>
+    </div>
+    <div class="conf-div">
+        To: <%= @flight.arrival_airport.airport_code %>
+    </div>
+    <div class="conf-div">
+        Enter Passenger Info:
+    </div>
+    <div class="conf-div pass-form">
+        <%= form_for @booking, local: true do |f| %>
+            <%= hidden_field_tag :flight_id, @flight.id %>
+                <%= f.fields_for :passengers do |passenger_form| %>
+                Passenger <%= passenger_form.options[:child_index] + 1 %>:
+                    <div>
+                        <div class="conf-div">
+                            <%= passenger_form.text_field :name, placeholder: "name" %>
+                        </div>
+                        <div class="conf-div">
+                            <%= passenger_form.text_field :email, placeholder: "email" %>
+                        </div>
+                    </div>
+                <% end %>
+            <%= submit_tag("Book Flight") %>
         <% end %>
-    <%= submit_tag("Book Flight") %>
-<% end %>
-
+    </div>
+</div>
 
 <% flash.each do |type, msg| %>
     <div>
