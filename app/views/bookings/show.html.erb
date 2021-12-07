@@ -1,28 +1,30 @@
 <div>
     <h1>Booking information</h1>
 </div>
-<div>
 
-</div>
-    Flight Number: <%= @booking.flight.id %>
-<div>
-    Departure Time: <%= @booking.flight.departure_time %>  
-</div>
-<div>
-    From: <%= @booking.flight.departure_airport.airport_code %>
+<div class="flight-confirm">
+    <div class="conf-div">
+        Flight Number: <%= @booking.flight.id %>
+    </div>
+    <div class="conf-div">
+        Departure Time: <%= @booking.flight.departure_time %>  
+    </div>
+    <div class="conf-div">
+        From: <%= @booking.flight.departure_airport.airport_code %>
 
-</div>
-<div>
-    To: <%= @booking.flight.arrival_airport.airport_code %>
-</div>
-<div>
-    Passengers:
-    <% @booking.passengers.each do |p| %>
-        <div>
-            Name: <%= p.name %>
-        </div>
-        <div>
-            Email: <%= p.email %>
-        </div>
-    <% end %>
+    </div>
+    <div class="conf-div">
+        To: <%= @booking.flight.arrival_airport.airport_code %>
+    </div>
+    <div class="conf-div">
+        Passengers:
+        <% @booking.passengers.each do |p| %>
+            <div>
+                Name: <%= p.name %>
+            </div>
+            <div>
+                Email: <%= p.email %>
+            </div>
+        <% end %>
+    </div>
 </div>
