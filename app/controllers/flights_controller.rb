@@ -7,7 +7,8 @@ class FlightsController < ApplicationController
         @passenger_options = 4.times.map { |i| [i + 1, i + 1] }
         @departure_airport = Airport.where(id: :airport_code)
 
-       @flights = Flight.search(params)
+        @flights = Flight.search(params)
+        @params = params
     end
 
 end

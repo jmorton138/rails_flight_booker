@@ -21,40 +21,47 @@
     <% end %>
 </div>
 <div id="flight-matches">
-    <% if @flights.length > 0 %>
-        <div>
-            <h2>Matching flights:</h2>
-        </div>
+    <% if @params["departure_code"] %>
+        <% if @flights.length == 0 %>
+            <div>
+                <h2>0 search results</h2>
+            </div>
+        <% elsif @flights.length > 0 %>
+            <div>
+                <h2><%= @flights.length %> matching flights:</h2>
+            </div>
 
-        <table>
-        <tr class="table-header">
-            <th>Flight no.</th>
-            <th>Departure</th>
-            <th>Arrival</th>
-            <th>Date</th>
-            <th>Departure Time</th>
-            <th>Duration</th>
-            <th>Choose Flight</th>
-        </tr>
-        <% @flights.each do |flight| %>
-            <tr class="table-row">
-                <th><%= flight.id %></th>
-                <th><%= flight.departure_airport.airport_code %></th>
-                <th><%= flight.arrival_airport.airport_code %></th>
-                <th><%= flight.departure_time_formatted %></th>
-                <th><%= flight.departure_time_format_time %></th>
-                <th><%= flight.format_duration %></th>
-                <th>
-                    <%= form_with(url: "bookings/new", method: "get") do |form| %>
-                        <%= hidden_field_tag "flight_id", flight.id %>
-                        <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
-                        <%= submit_tag("Book flight") %>
-                    <% end %>
-                </th>
+            <table>
+            <tr class="table-header">
+                <th>Flight no.</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Date</th>
+                <th>Departure Time</th>
+                <th>Duration</th>
+                <th>Choose Flight</th>
             </tr>
-        <% end %>
-        </table>
+            <% @flights.each do |flight| %>
+                <tr class="table-row">
+                    <th><%= flight.id %></th>
+                    <th><%= flight.departure_airport.airport_code %></th>
+                    <th><%= flight.arrival_airport.airport_code %></th>
+                    <th><%= flight.departure_time_formatted %></th>
+                    <th><%= flight.departure_time_format_time %></th>
+                    <th><%= flight.format_duration %></th>
+                    <th>
+                        <%= form_with(url: "bookings/new", method: "get") do |form| %>
+                            <%= hidden_field_tag "flight_id", flight.id %>
+                            <%= hidden_field_tag "num_tickets", params[:num_tickets] %>
+                            <%= submit_tag("Book flight") %>
+                        <% end %>
+                    </th>
+                </tr>
+            <% end %>
+            </table>
     <% end %>
+    <% end %>
+
 </div>
 
 
