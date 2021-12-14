@@ -27,6 +27,8 @@ form {
 
 #flight-matches {
     margin: 50px 70px;
+    overflow-x: auto;
+
     table {
         margin: auto;
         width: 56%;
