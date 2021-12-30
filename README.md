@@ -10,11 +10,11 @@ This project uses Ruby on Rails and builds a typical checkout process for bookin
 
 ## Functionality
 
-Users enter in the details of the flight they’re looking for in a form. After running this filtered search for available flights, users select a flight, enter their booking information, and confirm their booking. 
+Users enter in the details of the flight they’re looking for in a form. After running this filtered search for available flights, users select a flight from the search results, enter their booking information, and are directed to a confirmation page. 
 
-This project utilizes some of the more advanced features of forms in Rails like nesting attributes for entering every passenger’s data on a single form.
+Upon confirmation, they receive a confirmation email with Action Mailer. In development I used the Letter Opener gem to open the email content in a new window, without sending an actual email. This was really helpful for testing and learning how to use Action Mailer within the context of Rails forms. In production, I integrated the Twilio SendGrid add-on. Using the SendGrid API, the user receives a real confirmation email at the email address they enter into the form.
 
-Upon confirmation, they receive a confirmation email with Active Mailer. I used the Letter Opener Gem which opens the email in a new browser tab, rather than sending an actual email.
+This project utilizes some of the more advanced features of forms in Rails like nesting attributes for entering every passenger’s data on a single form. Through this project I learned how to construct the more complex forms that are often needed in web applications that take user data.
 
 ## Deployment
 
