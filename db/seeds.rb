@@ -7,12 +7,12 @@ lho = Airport.new(airport_code: "LHO")
 lho.save
 lgw = Airport.new(airport_code: "LGW")
 lgw.save
-# jfk = Airport.new(airport_code: "JFK")
-# jfk.save
-# ord = Airport.new(airport_code: "ORD")
-# ord.save
-# den = Airport.new(airport_code: "DEN")
-# den.save
+jfk = Airport.new(airport_code: "JFK")
+jfk.save
+ord = Airport.new(airport_code: "ORD")
+ord.save
+den = Airport.new(airport_code: "DEN")
+den.save
 
 
 
